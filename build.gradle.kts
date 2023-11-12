@@ -26,12 +26,6 @@ dependencies {
 
 tasks.withType<ShadowJar> {
     archiveClassifier.set("")
-    exclude(
-        "**/*.kotlin_metadata",
-        "**/*.kotlin_builtins",
-        "META-INF/"
-    )
-
     archiveFileName.set(
         "scala-banresetter.jar"
     )
