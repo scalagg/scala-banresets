@@ -3,6 +3,7 @@ import com.mongodb.client.model.Filters
 import com.xenomachina.argparser.ArgParser
 import com.xenomachina.argparser.default
 import com.xenomachina.argparser.mainBody
+import org.litote.kmongo.serialization.SerializationClassMappingTypeService
 import org.litote.kmongo.withKMongo
 
 class BanResetsArgs(parser: ArgParser)
@@ -17,6 +18,11 @@ class BanResetsArgs(parser: ArgParser)
 
 fun main(args: Array<String>) = mainBody {
     with(ArgParser(args).parseInto(::BanResetsArgs)) {
+        System.setProperty(
+            "org.litote.mongo.mapping.service",
+            SerializationClassMappingTypeService::class.qualifiedName!!
+        )
+
         val client = MongoClients.create(connectionUri)
         val database = client.getDatabase(database).withKMongo()
         val collection = database.getCollection(collection).withKMongo()
