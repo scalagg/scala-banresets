@@ -28,7 +28,7 @@ data class Punishment(
 
     val removedReason: String?,
     val removedOn: String?,
-    val removedAt: Long?
+    val removedAt: String?
 )
 
 fun main(args: Array<String>) = mainBody {
@@ -48,7 +48,7 @@ fun main(args: Array<String>) = mainBody {
                 set(
                     Punishment::removedReason setTo banResetReason,
                     Punishment::removedOn setTo "app:banreset",
-                    Punishment::removedAt setTo System.currentTimeMillis()
+                    Punishment::removedAt setTo "${System.currentTimeMillis()}"
                 )
             )
         ) {
